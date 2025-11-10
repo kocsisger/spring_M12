@@ -1,21 +1,29 @@
 package en.unideb.inf.SpringDataFX.frontend;
 
-import en.unideb.inf.SpringDataFX.SpringDataFxApplication;
 import javafx.event.ActionEvent;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+
 
 public class MainPageController {
-    private ConfigurableApplicationContext ctx;
+
+    BackendManager backendManager;
+
+    public BackendManager getBackendManager() {
+        return backendManager;
+    }
+
+    public void setBackendManager(BackendManager backendManager) {
+        this.backendManager = backendManager;
+    }
 
     public void handleStartButton(ActionEvent actionEvent) {
-        ctx = SpringApplication.run(SpringDataFxApplication.class);
+        backendManager.start();
     }
 
     public void handleStopButton(ActionEvent actionEvent) {
-        ctx.close();
+        backendManager.stop();
     }
 
-    public void handlePrinButton(ActionEvent actionEvent) {
+    public void handlePrintButton(ActionEvent actionEvent) {
+        backendManager.print();
     }
 }
